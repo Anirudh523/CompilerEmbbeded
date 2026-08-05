@@ -1,0 +1,28 @@
+program = {declaration};
+declaration = packet_decl | enum_decl;
+packet_decl = “packet”, identifier, [ packet_annotation ], “{“, {field_decl}, “}”;
+packet_annotation = “@endian”, “(“, endian_value, “)”;
+endian_value = “big” | “little”;
+field_decl = type_name, identifier, [array_suffix], [ [bit_annotation], [auto_annotation], “;”;
+array_suffix = “[“, integer, “]”;
+
+type_name = primitive_type | identifier;
+primitive_type = “uint8” | “uint16” | “uint32” | “int8” | “int16” | “int32” | “float32” | “crc16”;
+
+
+
+bit_annotation = “@bits”, “(“, integer, “)”;
+auto_annotation = “@auto”, [ “(“, checksum_algo, “)”]
+Checksum_algo = “crc16” | “crc32” | “sum8” | “
+
+Enum_decl = “enum”, identifier, [enum_backing_type], “{“, enum_value, {, “,”, enum_value}, “}”;
+enum_backing_type = ":" , primitive_type ;
+Enum_value = identifier, [“=”, integer];
+identifier = letter , { letter | digit | "_" } ;
+integer = digit , { digit } ;
+letter = "a".."z" | "A".."Z"; 
+digit = "0".."9" ;
+
+line_comment = "//" , { any_char_except_newline } , newline ;
+block_comment = "/*" , { any_char } , "*/" ;
+whitespace = " " | "\t" | "\n" | "\r" ;
