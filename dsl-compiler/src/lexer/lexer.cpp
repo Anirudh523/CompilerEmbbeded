@@ -54,3 +54,84 @@ char Lexer::advance() {
     return c;
 }
 
+char Lexer::peek() const {
+    if(isAtEnd()) return '\0';
+    return source_[pos_];
+}
+
+bool Lexer::isAtEnd() const {
+    return pos_ >= source_.size();
+}
+
+char Lexer::peekNext() const {
+    if(pos_ + 1 >= source_.size()) return '\0';
+    return source_[pos_ + 1];
+}
+
+Token Lexer::identifierOrKeyword() {
+    int start = pos_ - 1;
+    while(isalnum(peek()) || peek() == '_') advance();
+    std::string_view lexeme = std::string_view(source_).substr(start, pos_ - start);
+    if(lexeme == "packet") return Token{TokenType::Packet, lexeme, line_, col_ - (pos_ - start)};
+    if(lexeme == "enum") return Token{TokenType::Enum, lexeme, line_, col_ - (pos_ - start)};
+    if(lexeme == "uint8") return Token{TokenType::UInt8, lexeme, line_,col_ - (pos_ - start)};
+    if(lexeme == "uint16") return Token{TokenType::UInt16, lexeme, line_, col_ - (pos_ - start)};
+    if(lexeme == "uint32") return Token{TokenType::UInt32, lexeme, line_, col_ - (pos_ - start)};
+    if(lexeme == "int8") return Token{TokenType::Int8, lexeme, line_, col_ - (pos_ - start)};
+    if(lexeme == "int16") return Token{TokenType::Int16, lexeme, line_, col_ - (pos_ - start)};
+    if(lexeme == "int32") return Token{TokenType::Int32, lexeme, line_, col_ - (pos_ - start)};
+    if(lexeme == "float32") return Token{TokenType::Float32, lexeme, line_, col_ - (pos_ - start)};
+    if(lexeme == "crc16") return Token{TokenType::Crc16, lexeme, line_, col_ - (pos_ - start)};
+    return Token{TokenType::Identifier, lexeme, line_, col_ - (pos_ - start)};
+}
+
+Token Lexer::number() {
+    int start = pos_ - 1;
+    while(isdigit(peek())) advance();
+    std::string_view lexeme = std::string_view(source_).substr(start, pos_ - start);
+    return Token{TokenType::IntegerLiteral, lexeme, line_, col_ - (pos_ - start)};
+}
+
+void Lexer::skipWhitespaceAndComments() {
+    while(true) {
+        char c = peek();
+        switch(c) {
+            case ' ':
+                advance();
+                break;
+            case '\r':
+                advance();
+                break;
+            case '\t':
+                advance();
+                break;
+            case '\n':
+                advance();
+                line_++;
+                col_ = 1;
+                break;
+            case '/':
+                if(peekNext() == '/') {
+                    while(peek() != '\n' && !isAtEnd()) advance();
+                    break;
+                } else {
+                    return;
+                }
+                break;
+            default:
+                return;
+        }
+    }
+}
+
+std::vector<Token> Lexer::tokenize() {
+    std::vector<Token> tokens;
+    while(true) {
+        Token token = scanToken();
+        tokens.push_back(token);
+        if(token.type == TokenType::Eof) break;
+    }
+    return tokens;
+}
+
+
