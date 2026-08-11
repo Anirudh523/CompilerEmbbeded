@@ -1,6 +1,5 @@
 #include "lexer.hpp"
 #include "token.hpp"
-#pragma once
 using namespace std;
 
 Lexer::Lexer(const std::string& input) : source_(input), pos_(0), line_(1), col_(1) {}
@@ -107,12 +106,17 @@ void Lexer::skipWhitespaceAndComments() {
                 break;
             case '\n':
                 advance();
-                line_++;
-                col_ = 1;
                 break;
             case '/':
                 if(peekNext() == '/') {
                     while(peek() != '\n' && !isAtEnd()) advance();
+                    break;
+                } else if(peekNext() == '*') {
+                    advance();
+                    advance();
+                    while(!isAtEnd() && !(peek() == '*' && peekNext() == '/')) advance();
+                    if(!isAtEnd()) advance();
+                    if(!isAtEnd()) advance();
                     break;
                 } else {
                     return;
