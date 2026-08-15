@@ -1,0 +1,3 @@
+packet extra_endian @endian(big){
+	uint16 something_inside;
+}

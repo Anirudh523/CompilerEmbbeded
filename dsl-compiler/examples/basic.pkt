@@ -1,0 +1,3 @@
+packet normal{
+	uint32 timestamp;
+}

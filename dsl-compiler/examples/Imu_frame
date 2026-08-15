@@ -1,0 +1,9 @@
+packet IMUFrame{
+	uint16 seq;
+	float32 accel_x;
+	float32 accel_y;
+	float32 accel_z;
+	uint8 flags @bits(4);
+    crc16 checksum @auto;
+}
+

@@ -1,0 +1,5 @@
+enum SwimTimes: double{
+	Phelps;
+	Owen;
+	Aubey;
+}

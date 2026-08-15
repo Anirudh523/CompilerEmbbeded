@@ -6,7 +6,7 @@ Lexer::Lexer(const std::string& input) : source_(input), pos_(0), line_(1), col_
 
 Token Lexer::scanToken() {
     skipWhitespaceAndComments();
-    if (isAtEnd()) return makeToken(TokenType::Eof);
+    if (isAtEnd()) return Token{TokenType::Eof, std::string_view{}, line_, col_};
     char c = advance();
     switch(c) {
         case '{': return makeToken(TokenType::LBrace);
