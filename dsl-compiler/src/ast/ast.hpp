@@ -3,7 +3,6 @@
 #include <vector>
 #include <variant>
 #include <optional>
-using namespace std;
 
 enum class PrimitiveType {
     UInt8,
@@ -16,9 +15,9 @@ enum class PrimitiveType {
     Crc16
 };
 
-enum class Endian { Little, Big};
+enum class Endian { Little, Big };
 
-enum class ChecksumAlgo {Crc16, Crc32, Sum8, Xor8};
+enum class ChecksumAlgo { Crc16, Crc32, Sum8, Xor8 };
 
 struct FieldNode {
     std::string name;
@@ -30,12 +29,16 @@ struct FieldNode {
     bool isAuto = false;
     std::optional<ChecksumAlgo> checksum;
 
+    int byteOffset = -1;
+    int byteSize = -1;
 };
 
 struct PacketNode {
     std::string name;
     std::vector<FieldNode> fields;
     std::optional<Endian> endian;
+
+    int totalSize = -1;
 };
 
 struct EnumValueNode {
