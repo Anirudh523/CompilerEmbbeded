@@ -8,6 +8,6 @@ add_executable(dslc
     src/main.cpp
     src/lexer/lexer.cpp
     src/parser/parser.cpp
+    src/sema/sema.cpp
 )
-
 

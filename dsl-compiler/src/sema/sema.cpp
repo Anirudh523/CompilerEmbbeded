@@ -10,11 +10,11 @@ void SemanticAnalyzer::buildSymbolTable(ProgramNode& program){
                 throw std::runtime_error("Duplicate declaration name. " + packet->name);
             }
             packetTable_[packet->name] = packet;
-        } else if(auto* enum = std::get_if<EnumNode>(&decl)){
-            if(packetTable_.count(enum->name) || enumTable_.count(packet->name)){
-                throw std::runtime_error("Duplicate declaration name." + )
+        } else if(auto* enumNode = std::get_if<EnumNode>(&decl)){
+            if(packetTable_.count(enumNode->name) || enumTable_.count(enumNode->name)){
+                throw std::runtime_error("Duplicate declaration name.");
             }
-            enumTable_[enum->name] = packet;
+            enumTable_[enumNode->name] = enumNode;
         }
     }
 }
@@ -24,16 +24,14 @@ void SemanticAnalyzer::resolveField(FieldNode& field, const std::string& packetN
 
     const std::string& ref = field.typeRef.value();
 
-    if(ref){
-        if(packetTable_.count(ref)){
-            //size will be calculated later
-        } else if(enumTable_.count(ref)){
-            //size will be calculate later
-        } else {
-            throw std::runtime_error(
-                "Unknown type " + ref + " in the field " + field.name + "of packet " + packetName;
-            )
-        }
+    if(packetTable_.count(ref)){
+        //size will be calculated later
+    } else if(enumTable_.count(ref)){
+        //size will be calculate later
+    } else {
+        throw std::runtime_error(
+            "Unknown type " + ref + " in the field " + field.name + "of packet " + packetName
+        );
     }
 }
 
@@ -44,13 +42,13 @@ void SemanticAnalyzer::resolvePacket(PacketNode& packet) {
         throw std::runtime_error("Circular packet detected involving" + packet.name);
     }
 
-    resolutionStack.push_back(packet);
+    resolutionStack.push_back(packet.name);
 
 
     for(auto& field: packet.fields){
-        resolveField(field, packet);
-        if(field.typeRef && packetTable_.count(field.typeRef.value())){
-            resolvePacket(field.typeRef.value());
+        resolveField(field, packet.name);
+        if(field.typeRef.has_value() && packetTable_.count(field.typeRef.value())){
+            resolvePacket(*packetTable_[field.typeRef.value()]);
         }
 
     }
@@ -61,9 +59,8 @@ void SemanticAnalyzer::resolvePacket(PacketNode& packet) {
 void SemanticAnalyzer::validateBitfields(PacketNode& packet) {
     int bitAccumulator = 0;
     for(auto& field: packet.fields){
-        const std::string& ref = field.typeRef.value();
-        if(field.bit_width.has_value()){
-            bitAccumulator += field.bit_width;
+        if(field.bitWidth.has_value()){
+            bitAccumulator += field.bitWidth.value();
         } else {
             bitAccumulator = 0;
         }
@@ -89,21 +86,22 @@ void SemanticAnalyzer::computeLayout(PacketNode& packet){
     int offset = 0;
     for(auto& field: packet.fields){
         int size = 0;
-        if(field.p_type.has_value()){
-            size += primitiveSizeInBytes(field.p_type.value);
+        if(field.primitiveType.has_value()){
+            size += primitiveSizeInBytes(field.primitiveType.value());
         } else {
-            std::string external_pack = field.typeRef.value();
+            const std::string& external_pack = field.typeRef.value();
             if(packetTable_.count(external_pack)){
-                size += packetTable_[external_pack].totalSize;
+                size += packetTable_[external_pack] -> totalSize;
             } else if(enumTable_.count(external_pack)){
-                size += enumTable_[external_pack].totalSize;
+                size += primitiveSizeInBytes(enumTable_[external_pack]->backingType.value());
             }
         }
         if(field.arraySize.has_value()){size *= field.arraySize.value();};
         offset += size;
-        packet.byteOffset = offset;
-        packet.byteSize = size;
+        field.byteOffset = offset;
+        field.byteSize = size;
     }
+    packet.totalSize = offset;
 }
 
 void SemanticAnalyzer::resolveEnumBackingType(EnumNode& node){
@@ -141,8 +139,8 @@ void SemanticAnalyzer::analyze(ProgramNode& program){
     }
 
     for (auto& [name, packetNode] : packetTable_) {
-        resolvePacket(*packetNode);       
+        resolvePacket(*packetNode);   
+        validateBitfields(*packetNode);    
         computeLayout(*packetNode);        
     }
 }
-
