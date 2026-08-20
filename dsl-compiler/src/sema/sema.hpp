@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include <string>
 #include <stdexcept>
+using namespace std;
 
 class SemanticAnalyzer {
     public:

@@ -1,6 +1,6 @@
 #pragma once
-#include "/Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/src/ast/ast.hpp"
-#include "/Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/src/lexer/lexer.hpp"
+#include "ast/ast.hpp"
+#include "lexer/lexer.hpp"
 #include <string>
 #include <vector>
 
