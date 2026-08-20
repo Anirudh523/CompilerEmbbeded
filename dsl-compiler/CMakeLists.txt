@@ -10,4 +10,5 @@ add_executable(dslc
     src/parser/parser.cpp
     src/sema/sema.cpp
 )
+target_include_directories(dslc PRIVATE src)
 

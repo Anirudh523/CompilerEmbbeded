@@ -11,6 +11,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/src/lexer/lexer.cpp" "CMakeFiles/dslc.dir/src/lexer/lexer.cpp.o" "gcc" "CMakeFiles/dslc.dir/src/lexer/lexer.cpp.o.d"
   "/Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/src/main.cpp" "CMakeFiles/dslc.dir/src/main.cpp.o" "gcc" "CMakeFiles/dslc.dir/src/main.cpp.o.d"
   "/Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/src/parser/parser.cpp" "CMakeFiles/dslc.dir/src/parser/parser.cpp.o" "gcc" "CMakeFiles/dslc.dir/src/parser/parser.cpp.o.d"
+  "/Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/src/sema/sema.cpp" "CMakeFiles/dslc.dir/src/sema/sema.cpp.o" "gcc" "CMakeFiles/dslc.dir/src/sema/sema.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

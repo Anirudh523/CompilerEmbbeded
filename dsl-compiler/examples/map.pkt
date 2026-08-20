@@ -1,9 +1,9 @@
 packet Position{
 	float32 lat;
-	float 32 lon;
+	float32 lon;
 }
 
 packet RealTime{
 	uint32 timestamp;
-	position position;
+	Position position;
 }

@@ -1832,7 +1832,8 @@ CMakeFiles/dslc.dir/src/main.cpp.o: /Users/anirudh/Documents/GitHub/CompilerEmbb
   /Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/src/ast/ast.hpp \
   /Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/src/lexer/lexer.hpp \
   /Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/src/lexer/token.hpp \
-  /Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/src/parser/parser.hpp
+  /Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/src/parser/parser.hpp \
+  /Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/src/sema/sema.hpp
 
 CMakeFiles/dslc.dir/src/parser/parser.cpp.o: /Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/src/parser/parser.cpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/Availability.h \
@@ -2712,6 +2713,8 @@ CMakeFiles/dslc.dir/src/parser/parser.cpp.o: /Users/anirudh/Documents/GitHub/Com
 
 
 /Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/src/parser/parser.cpp:
+
+/Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/src/sema/sema.hpp:
 
 /Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/src/parser/parser.hpp:
 

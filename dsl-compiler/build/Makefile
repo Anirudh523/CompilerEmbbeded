@@ -201,6 +201,30 @@ src/parser/parser.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/dslc.dir/build.make CMakeFiles/dslc.dir/src/parser/parser.cpp.s
 .PHONY : src/parser/parser.cpp.s
 
+src/sema/sema.o: src/sema/sema.cpp.o
+.PHONY : src/sema/sema.o
+
+# target to build an object file
+src/sema/sema.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dslc.dir/build.make CMakeFiles/dslc.dir/src/sema/sema.cpp.o
+.PHONY : src/sema/sema.cpp.o
+
+src/sema/sema.i: src/sema/sema.cpp.i
+.PHONY : src/sema/sema.i
+
+# target to preprocess a source file
+src/sema/sema.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dslc.dir/build.make CMakeFiles/dslc.dir/src/sema/sema.cpp.i
+.PHONY : src/sema/sema.cpp.i
+
+src/sema/sema.s: src/sema/sema.cpp.s
+.PHONY : src/sema/sema.s
+
+# target to generate assembly for a file
+src/sema/sema.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dslc.dir/build.make CMakeFiles/dslc.dir/src/sema/sema.cpp.s
+.PHONY : src/sema/sema.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -219,6 +243,9 @@ help:
 	@echo "... src/parser/parser.o"
 	@echo "... src/parser/parser.i"
 	@echo "... src/parser/parser.s"
+	@echo "... src/sema/sema.o"
+	@echo "... src/sema/sema.i"
+	@echo "... src/sema/sema.s"
 .PHONY : help
 
 

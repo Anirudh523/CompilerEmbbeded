@@ -9,7 +9,7 @@ class SemanticAnalyzer {
     public:
         void analyze(ProgramNode& program);
     private:
-        std::unordered_map<std:string, PacketNode*> packetTable_;
+        std::unordered_map<std::string, PacketNode*> packetTable_;
         std::unordered_map<std::string, EnumNode*> enumTable_;
 
         void buildSymbolTable(ProgramNode& program);

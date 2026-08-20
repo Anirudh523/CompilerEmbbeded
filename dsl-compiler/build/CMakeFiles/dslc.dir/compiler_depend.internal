@@ -1835,6 +1835,7 @@ CMakeFiles/dslc.dir/src/main.cpp.o
  /Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/src/lexer/lexer.hpp
  /Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/src/lexer/token.hpp
  /Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/src/parser/parser.hpp
+ /Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/src/sema/sema.hpp
 
 CMakeFiles/dslc.dir/src/parser/parser.cpp.o
  /Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/src/parser/parser.cpp

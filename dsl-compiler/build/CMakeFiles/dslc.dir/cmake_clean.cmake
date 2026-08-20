@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/dslc.dir/src/main.cpp.o.d"
   "CMakeFiles/dslc.dir/src/parser/parser.cpp.o"
   "CMakeFiles/dslc.dir/src/parser/parser.cpp.o.d"
+  "CMakeFiles/dslc.dir/src/sema/sema.cpp.o"
+  "CMakeFiles/dslc.dir/src/sema/sema.cpp.o.d"
   "dslc"
   "dslc.pdb"
 )

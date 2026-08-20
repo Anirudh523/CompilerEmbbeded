@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = 
+CXX_INCLUDES = -I/Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/src
 
 CXX_FLAGSarm64 = -std=gnu++20 -arch arm64
 
