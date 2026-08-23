@@ -4,6 +4,7 @@
 #include "parser/parser.hpp"
 #include "ast/ast.hpp"
 #include "sema/sema.hpp"
+#include "optimize/optimize.hpp"
 #include <string>
 #include <vector>
 #include <sstream>
@@ -32,6 +33,7 @@ int main(int argc, char* argv[]) {
         std::cout << "Parsed " << program.declarations.size() << " declaration(s):\n";
         SemanticAnalyzer sema;
         sema.analyze(program);
+
         std::cout << "Program validated" << program.declarations.size() << "declaration(s)\n";
 
         for (const auto& decl : program.declarations) {
