@@ -33,6 +33,9 @@ int main(int argc, char* argv[]) {
         std::cout << "Parsed " << program.declarations.size() << " declaration(s):\n";
         SemanticAnalyzer sema;
         sema.analyze(program);
+        Optimizer optimizer;
+        optimizer.optimize(program);
+        sema.analyze(program);
 
         std::cout << "Program validated" << program.declarations.size() << "declaration(s)\n";
 
