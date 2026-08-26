@@ -8,7 +8,8 @@
 #include <string>
 #include <vector>
 #include <sstream>
-
+#include "codegen/codegen.hpp"
+#include <fstream>
 int main(int argc, char* argv[]) {
     if(argc < 2) {
         std::cerr << "Usage: " << argv[0] << " <input_file>" << std::endl;
@@ -48,6 +49,13 @@ int main(int argc, char* argv[]) {
             std::cout << "\n";
             }, decl);
         }
+
+        CodeGenerator codegen;
+        std::string generatedCode = codegen.generate(program);
+
+        std::ofstream outFile("generated_output.hpp");
+        outFile << generatedCode;
+        std::cout << "Generated code written to generated_output.hpp\n";
     } catch(const std::exception& e) {
         std::cerr << "Error: " << e.what() << std::endl;
         return 1;
