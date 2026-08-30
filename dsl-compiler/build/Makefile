@@ -129,6 +129,30 @@ dslc/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/dslc.dir/build.make CMakeFiles/dslc.dir/build
 .PHONY : dslc/fast
 
+src/codegen/codegen.o: src/codegen/codegen.cpp.o
+.PHONY : src/codegen/codegen.o
+
+# target to build an object file
+src/codegen/codegen.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dslc.dir/build.make CMakeFiles/dslc.dir/src/codegen/codegen.cpp.o
+.PHONY : src/codegen/codegen.cpp.o
+
+src/codegen/codegen.i: src/codegen/codegen.cpp.i
+.PHONY : src/codegen/codegen.i
+
+# target to preprocess a source file
+src/codegen/codegen.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dslc.dir/build.make CMakeFiles/dslc.dir/src/codegen/codegen.cpp.i
+.PHONY : src/codegen/codegen.cpp.i
+
+src/codegen/codegen.s: src/codegen/codegen.cpp.s
+.PHONY : src/codegen/codegen.s
+
+# target to generate assembly for a file
+src/codegen/codegen.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dslc.dir/build.make CMakeFiles/dslc.dir/src/codegen/codegen.cpp.s
+.PHONY : src/codegen/codegen.cpp.s
+
 src/lexer/lexer.o: src/lexer/lexer.cpp.o
 .PHONY : src/lexer/lexer.o
 
@@ -176,6 +200,30 @@ src/main.s: src/main.cpp.s
 src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/dslc.dir/build.make CMakeFiles/dslc.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
+
+src/optimize/optimize.o: src/optimize/optimize.cpp.o
+.PHONY : src/optimize/optimize.o
+
+# target to build an object file
+src/optimize/optimize.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dslc.dir/build.make CMakeFiles/dslc.dir/src/optimize/optimize.cpp.o
+.PHONY : src/optimize/optimize.cpp.o
+
+src/optimize/optimize.i: src/optimize/optimize.cpp.i
+.PHONY : src/optimize/optimize.i
+
+# target to preprocess a source file
+src/optimize/optimize.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dslc.dir/build.make CMakeFiles/dslc.dir/src/optimize/optimize.cpp.i
+.PHONY : src/optimize/optimize.cpp.i
+
+src/optimize/optimize.s: src/optimize/optimize.cpp.s
+.PHONY : src/optimize/optimize.s
+
+# target to generate assembly for a file
+src/optimize/optimize.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dslc.dir/build.make CMakeFiles/dslc.dir/src/optimize/optimize.cpp.s
+.PHONY : src/optimize/optimize.cpp.s
 
 src/parser/parser.o: src/parser/parser.cpp.o
 .PHONY : src/parser/parser.o
@@ -234,12 +282,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... dslc"
+	@echo "... src/codegen/codegen.o"
+	@echo "... src/codegen/codegen.i"
+	@echo "... src/codegen/codegen.s"
 	@echo "... src/lexer/lexer.o"
 	@echo "... src/lexer/lexer.i"
 	@echo "... src/lexer/lexer.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/optimize/optimize.o"
+	@echo "... src/optimize/optimize.i"
+	@echo "... src/optimize/optimize.s"
 	@echo "... src/parser/parser.o"
 	@echo "... src/parser/parser.i"
 	@echo "... src/parser/parser.s"

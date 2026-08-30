@@ -9,6 +9,8 @@ add_executable(dslc
     src/lexer/lexer.cpp
     src/parser/parser.cpp
     src/sema/sema.cpp
+    src/optimize/optimize.cpp
+    src/codegen/codegen.cpp
 )
 target_include_directories(dslc PRIVATE src)
 

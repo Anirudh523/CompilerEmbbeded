@@ -128,12 +128,42 @@ CMakeFiles/dslc.dir/src/sema/sema.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/dslc.dir/src/sema/sema.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/src/sema/sema.cpp -o CMakeFiles/dslc.dir/src/sema/sema.cpp.s
 
+CMakeFiles/dslc.dir/src/optimize/optimize.cpp.o: CMakeFiles/dslc.dir/flags.make
+CMakeFiles/dslc.dir/src/optimize/optimize.cpp.o: /Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/src/optimize/optimize.cpp
+CMakeFiles/dslc.dir/src/optimize/optimize.cpp.o: CMakeFiles/dslc.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/dslc.dir/src/optimize/optimize.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/dslc.dir/src/optimize/optimize.cpp.o -MF CMakeFiles/dslc.dir/src/optimize/optimize.cpp.o.d -o CMakeFiles/dslc.dir/src/optimize/optimize.cpp.o -c /Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/src/optimize/optimize.cpp
+
+CMakeFiles/dslc.dir/src/optimize/optimize.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/dslc.dir/src/optimize/optimize.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/src/optimize/optimize.cpp > CMakeFiles/dslc.dir/src/optimize/optimize.cpp.i
+
+CMakeFiles/dslc.dir/src/optimize/optimize.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/dslc.dir/src/optimize/optimize.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/src/optimize/optimize.cpp -o CMakeFiles/dslc.dir/src/optimize/optimize.cpp.s
+
+CMakeFiles/dslc.dir/src/codegen/codegen.cpp.o: CMakeFiles/dslc.dir/flags.make
+CMakeFiles/dslc.dir/src/codegen/codegen.cpp.o: /Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/src/codegen/codegen.cpp
+CMakeFiles/dslc.dir/src/codegen/codegen.cpp.o: CMakeFiles/dslc.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/dslc.dir/src/codegen/codegen.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/dslc.dir/src/codegen/codegen.cpp.o -MF CMakeFiles/dslc.dir/src/codegen/codegen.cpp.o.d -o CMakeFiles/dslc.dir/src/codegen/codegen.cpp.o -c /Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/src/codegen/codegen.cpp
+
+CMakeFiles/dslc.dir/src/codegen/codegen.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/dslc.dir/src/codegen/codegen.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/src/codegen/codegen.cpp > CMakeFiles/dslc.dir/src/codegen/codegen.cpp.i
+
+CMakeFiles/dslc.dir/src/codegen/codegen.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/dslc.dir/src/codegen/codegen.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/src/codegen/codegen.cpp -o CMakeFiles/dslc.dir/src/codegen/codegen.cpp.s
+
 # Object files for target dslc
 dslc_OBJECTS = \
 "CMakeFiles/dslc.dir/src/main.cpp.o" \
 "CMakeFiles/dslc.dir/src/lexer/lexer.cpp.o" \
 "CMakeFiles/dslc.dir/src/parser/parser.cpp.o" \
-"CMakeFiles/dslc.dir/src/sema/sema.cpp.o"
+"CMakeFiles/dslc.dir/src/sema/sema.cpp.o" \
+"CMakeFiles/dslc.dir/src/optimize/optimize.cpp.o" \
+"CMakeFiles/dslc.dir/src/codegen/codegen.cpp.o"
 
 # External object files for target dslc
 dslc_EXTERNAL_OBJECTS =
@@ -142,9 +172,11 @@ dslc: CMakeFiles/dslc.dir/src/main.cpp.o
 dslc: CMakeFiles/dslc.dir/src/lexer/lexer.cpp.o
 dslc: CMakeFiles/dslc.dir/src/parser/parser.cpp.o
 dslc: CMakeFiles/dslc.dir/src/sema/sema.cpp.o
+dslc: CMakeFiles/dslc.dir/src/optimize/optimize.cpp.o
+dslc: CMakeFiles/dslc.dir/src/codegen/codegen.cpp.o
 dslc: CMakeFiles/dslc.dir/build.make
 dslc: CMakeFiles/dslc.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable dslc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/anirudh/Documents/GitHub/CompilerEmbbeded/dsl-compiler/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable dslc"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/dslc.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -1,5 +1,5 @@
 packet StatusByte {
 	uint8 error_code @bits(3);
-	uint8 mode         @bits(2);
-	uint8 error           @bits(1);
+	uint8 mode @bits(2);
+	uint8 error @bits(1);
 }

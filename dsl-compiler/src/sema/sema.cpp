@@ -84,7 +84,32 @@ int SemanticAnalyzer::primitiveSizeInBytes(PrimitiveType type) const {
 
 void SemanticAnalyzer::computeLayout(PacketNode& packet){
     int offset = 0;
+    int bitShift = 8;
     for(auto& field: packet.fields){
+        if(field.bitWidth.has_value()){
+            int width = field.bitWidth.value();
+
+            if(bitShift == 8) {
+                bitShift = 8 - width;
+            } else {
+                bitShift -= width;
+            }
+            field.byteOffset = offset;
+            field.byteSize = 1;
+            field.bitShift = bitShift;
+
+            if(bitShift == 0){
+                offset += 1;
+                bitShift = 8;
+            }
+            continue;
+        }
+
+        if(bitShift != 8 && bitShift > 0){
+            offset += 1;
+            bitShift = 8;
+        }
+
         int size = 0;
         if(field.primitiveType.has_value()){
             size += primitiveSizeInBytes(field.primitiveType.value());
@@ -97,10 +122,15 @@ void SemanticAnalyzer::computeLayout(PacketNode& packet){
             }
         }
         if(field.arraySize.has_value()){size *= field.arraySize.value();};
-        offset += size;
         field.byteOffset = offset;
         field.byteSize = size;
+        offset += size;
     }
+
+    if (bitShift != 8 && bitShift > 0) {
+        offset += 1;
+    }
+
     packet.totalSize = offset;
 }
 
@@ -133,6 +163,8 @@ void SemanticAnalyzer::resolveEnumBackingType(EnumNode& node){
 }
 
 void SemanticAnalyzer::analyze(ProgramNode& program){
+    packetTable_.clear();
+    enumTable_.clear();
     buildSymbolTable(program);
     for (auto& [name, enumNode] : enumTable_) {
         resolveEnumBackingType(*enumNode);

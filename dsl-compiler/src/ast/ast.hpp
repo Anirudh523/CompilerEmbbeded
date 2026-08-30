@@ -24,6 +24,7 @@ struct FieldNode {
     std::optional<PrimitiveType> primitiveType;
     std::optional<std::string> typeRef;
 
+
     std::optional<int> arraySize;
     std::optional<int> bitWidth;
     bool isAuto = false;
@@ -31,6 +32,7 @@ struct FieldNode {
 
     int byteOffset = -1;
     int byteSize = -1;
+    int bitShift = -1;
 };
 
 struct PacketNode {

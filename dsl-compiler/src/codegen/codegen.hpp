@@ -11,4 +11,5 @@ private:
     std::string generatePackFunction(const PacketNode& node);
     std::string generateUnPackFunction(const PacketNode& node);
     std::string primitiveTypeToCpp(PrimitiveType type) const;
-}
+    std::string generateChecksumHelpers();
+};
