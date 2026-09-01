@@ -17,24 +17,17 @@ inline uint16_t crc16(const uint8_t* data, size_t length) {
  return crc;
 }
 
-struct StatusByte {
-    uint8_t error_code;
-    uint8_t mode;
-    uint8_t error;
+struct extra_endian {
+    uint16_t something_inside;
 };
-// Note: StatusByte packs to 1 bytes on the wire; in-memory struct size may differ.
+static_assert(sizeof(extra_endian) == 2);
 
-inline void pack(const StatusByte& value, uint8_t* buffer) {
-    buffer[0] = 0;
-    buffer[0] = (buffer[0] & ~(7 << 5)) | ((value.error_code & 7) << 5);
-    buffer[0] = (buffer[0] & ~(3 << 3)) | ((value.mode & 3) << 3);
-    buffer[0] = (buffer[0] & ~(1 << 2)) | ((value.error & 1) << 2);
+inline void pack(const extra_endian& value, uint8_t* buffer) {
+    std::memcpy(buffer + 0, &value.something_inside, 2);
 }
 
-inline bool unpack(const uint8_t* buffer, StatusByte& value) {
-    value.error_code = (buffer[0] >> 5) & 7;
-    value.mode = (buffer[0] >> 3) & 3;
-    value.error = (buffer[0] >> 2) & 1;
+inline bool unpack(const uint8_t* buffer, extra_endian& value) {
+    std::memcpy(&value.something_inside, buffer + 0, 2);
     return true;
 }
 
