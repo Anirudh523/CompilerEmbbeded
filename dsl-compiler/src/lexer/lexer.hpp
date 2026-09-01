@@ -1,28 +1,32 @@
-#pragma once
 #include <string>
 #include "token.hpp"
 #include <vector>
+#include <iostream>
 #include <cctype>
+#pragma once
 
 class Lexer {
     public:
-        explicit Lexer(const std::string& input);
+        Lexer(const std::string& input);
+
+        Token scanToken();
+
+        Token identifierOrKeyword();
+
+        Token number();
+
+        void skipWhitespaceAndComments();
+
         std::vector<Token> tokenize();
 
     private:
+        int col_;
+        int pos_;
+        int line_;
         std::string source_;
-        int pos_ = 0;
-        int line_ = 1;
-        int col_ = 1;
-
-        Token scanToken();
-        Token identifierOrKeyword();
-        Token number();
-        void skipWhitespaceAndComments();
-        Token makeToken(const TokenType& type);
-
         char advance();
         char peek() const;
         char peekNext() const;
         bool isAtEnd() const;
+        Token makeToken(const TokenType& type);
 };
