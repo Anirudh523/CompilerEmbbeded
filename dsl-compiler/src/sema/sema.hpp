@@ -18,6 +18,7 @@ class SemanticAnalyzer {
         void validateBitfields(PacketNode& packet);
         void computeLayout(PacketNode& packet);
         void resolveEnumBackingType(EnumNode& node);
+        void validateEndian(const PacketNode& packet);
 
         int primitiveSizeInBytes(PrimitiveType type) const;
 };

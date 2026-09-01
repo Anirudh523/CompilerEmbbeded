@@ -68,6 +68,15 @@ void SemanticAnalyzer::validateBitfields(PacketNode& packet) {
     }
 }
 
+void SemanticAnalyzer::validateEndian(const PacketNode& packet) {
+    if (packet.endian.has_value() && packet.endian.value() == Endian::Big) {
+        throw std::runtime_error(
+            "Packet '" + packet.name + "' uses @endian(big), which is not yet supported. "
+            "Only little-endian (the default) is currently implemented in codegen."
+        );
+    }
+}
+
 int SemanticAnalyzer::primitiveSizeInBytes(PrimitiveType type) const {
     switch(type){
         case PrimitiveType::UInt8:
